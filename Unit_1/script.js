@@ -24,6 +24,11 @@ if (lengthRoomOne !== null && widthRoomOne !== null && !isNaN(lengthRoomOne) && 
 
 } else {
     alert('Ошибка в введенных данных');
+    const rebootPage = confirm('Пройти ещё раз ?')
+
+    if (rebootPage) {
+        window.location.reload()
+    }
 }
 
 
