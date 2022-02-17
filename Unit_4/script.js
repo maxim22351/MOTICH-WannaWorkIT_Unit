@@ -40,10 +40,3 @@ blockButton.addEventListener('click', function (e) {
             break;
     }
 })
-
-blockButton.children[4].addEventListener('copy',function (){
-    this.insertAdjacentHTML(
-            'beforebegin',
-            '<button style="background: deepskyblue">Button 5</button>'
-        )
-})
