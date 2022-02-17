@@ -1,7 +1,6 @@
-
 document.querySelector('.block_btn').addEventListener('click', function (e) {
 
-    switch (e.target.style.backgroundColor){
+    switch (e.target.style.backgroundColor) {
         case 'red':
             document.body.style.backgroundColor = 'red';
             break;
@@ -22,10 +21,28 @@ document.querySelector('.block_btn').addEventListener('click', function (e) {
             break;
 
         case 'deepskyblue':
-            this.children[4].insertAdjacentHTML(
+
+        async function cloneButton(item) {
+            let event = e.target;
+            let indexBtn;
+
+            await Array.from(item.children).forEach(item => {
+                if (item.style.backgroundColor === event.style.backgroundColor) {
+                    indexBtn = parseInt(item.textContent.match(/[0-9]/))
+                }
+
+            })
+
+            await item.children[indexBtn - 1].insertAdjacentHTML(
                 'beforebegin',
-                '<button style="background: deepskyblue">Button 5</button>'
+                `<${event.nodeName.toLowerCase()} style="background: ${event.style.backgroundColor}">
+                        ${event.textContent}
+                      </${event.nodeName.toLowerCase()}>`
             )
+        }
+
+            cloneButton(this);
+
             break;
 
         case 'blue':
