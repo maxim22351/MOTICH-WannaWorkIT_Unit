@@ -1,7 +1,5 @@
-const blockButton = document.querySelector('.block_btn')
 
-
-blockButton.addEventListener('click', function (e) {
+document.querySelector('.block_btn').addEventListener('click', function (e) {
 
     switch (e.target.style.backgroundColor){
         case 'red':
