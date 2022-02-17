@@ -23,6 +23,13 @@ blockButton.addEventListener('click', function (e) {
             document.body.children[1].style.display = 'block'
             break;
 
+        case 'deepskyblue':
+            this.children[4].insertAdjacentHTML(
+                'beforebegin',
+                '<button style="background: deepskyblue">Button 5</button>'
+            )
+            break;
+
         case 'blue':
             this.firstElementChild.style.display = 'none';
             break;
