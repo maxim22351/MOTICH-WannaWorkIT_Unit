@@ -11,6 +11,90 @@
 //
 // })
 
+//delete
+
+function Delete (){
+    const iconDelete = document.querySelectorAll('.delete_note')
+
+    iconDelete.forEach(deleteIcon => {
+        deleteIcon.addEventListener('click',(e) => {
+            const getArrLocalStorage = JSON.parse(localStorage.getItem('notes'));
+            let searchKey;
+
+
+            getArrLocalStorage.forEach(item => {
+                if (item.key === e.target.dataset.key){
+                    searchKey = item.key
+                }
+            })
+
+
+            let index = getArrLocalStorage.findIndex(el => el.key === searchKey);
+
+            getArrLocalStorage.splice(index,1)
+
+            location.reload()
+            localStorage.setItem('notes',JSON.stringify(getArrLocalStorage))
+
+        })
+    })
+
+}
+
+function change (){
+    const iconChange = document.querySelectorAll('.change_note')
+    const popupChange = document.querySelector('.change')
+    const closeChangePopup = popupChange.querySelector('.popup_form_btn_back')
+    const popupChangeForm = popupChange.querySelector('.popup_form_add')
+    const popupChangeButton = popupChangeForm.querySelector('.popup_form_btn_creat')
+    const getArrLocalStorage = JSON.parse(localStorage.getItem('notes'))
+    let changeKey;
+
+    iconChange.forEach(iconChange => {
+        iconChange.addEventListener('click',(e)=>{
+            e.preventDefault()
+
+            changeKey = e.target.dataset.key;
+            popupChange.style.display = 'block'
+            document.body.style.overflow = 'hidden'
+
+            getArrLocalStorage.forEach(item => {
+                if (item.key === changeKey){
+                    popupChangeForm.children[0].children[0].value = item.title
+                    popupChangeForm.children[1].children[0].value = item.desk
+                    popupChangeForm.children[2].children[0].value = item.color
+                    popupChangeForm.children[3].children[0].value = item.day
+
+                }
+            })
+
+        })
+    })
+
+    closeChangePopup.addEventListener('click',(e) => {
+        e.preventDefault()
+        popupChange.style.display = 'none'
+        document.body.style.overflow = ''
+    })
+
+    popupChangeButton.addEventListener('click',(e) => {
+        e.preventDefault()
+
+        getArrLocalStorage.forEach(item => {
+            if (item.key === changeKey){
+                 item.title = popupChangeForm.children[0].children[0].value
+                 item.desk = popupChangeForm.children[1].children[0].value
+                 item.color = popupChangeForm.children[2].children[0].value
+                 item.day = popupChangeForm.children[3].children[0].value
+
+            }
+        })
+        alert('Успешно изменили заметку')
+        localStorage.setItem('notes',JSON.stringify(getArrLocalStorage))
+        location.reload()
+    })
+}
+
 // show notes
 const blockNotes = document.querySelector('.section_block_notes_ table tbody')
 const blockLastNotes = document.querySelectorAll('.section_last_block_item')[1]
@@ -136,6 +220,7 @@ buttonCreatList.addEventListener('click',(e)=>{
             blockLastNotes.children[0].textContent = arr[1]
             blockLastNotes.children[1].textContent = arr[4]
             blockLastNotes.children[2].textContent = arr[2]
+
         } else {
             let getArrLocalStorage = JSON.parse(localStorage.getItem('notes'));
 
@@ -165,40 +250,17 @@ buttonCreatList.addEventListener('click',(e)=>{
             blockLastNotes.children[1].textContent = arr[4]
             blockLastNotes.children[2].textContent = arr[2]
 
+
             localStorage.setItem('notes',JSON.stringify(getArrLocalStorage))
         }
 
     }
+    Delete()
+    change()
 })
 
 
-// delete/change
-
-const iconDelete = document.querySelectorAll('.delete_note')
-const iconChange = document.querySelector('.change_note')
-
-iconDelete.forEach(deleteIcon => {
-    deleteIcon.addEventListener('click',(e) => {
-        const getArrLocalStorage = JSON.parse(localStorage.getItem('notes'));
-        let searchKey;
-
-
-        getArrLocalStorage.forEach(item => {
-            if (item.key === e.target.dataset.key){
-                searchKey = item.key
-            }
-        })
-
-
-        let index = getArrLocalStorage.findIndex(el => el.key === searchKey);
-
-        getArrLocalStorage.splice(index,1)
-
-        location.reload()
-        localStorage.setItem('notes',JSON.stringify(getArrLocalStorage))
-
-    })
-})
-
+Delete()
+change()
 
 
