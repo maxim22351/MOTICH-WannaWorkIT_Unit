@@ -22,24 +22,24 @@ document.querySelector('.block_btn').addEventListener('click', function (e) {
 
         case 'deepskyblue':
 
-        async function cloneButton(item) {
-            let event = e.target;
-            let indexBtn;
+            async function cloneButton(item) {
+                let event = e.target;
+                let indexBtn;
 
-            await Array.from(item.children).forEach(item => {
-                if (item.style.backgroundColor === event.style.backgroundColor) {
-                    indexBtn = parseInt(item.textContent.match(/[0-9]/))
-                }
+                await Array.from(item.children).forEach(item => {
+                    if (item.style.backgroundColor === event.style.backgroundColor) {
+                        indexBtn = parseInt(item.textContent.match(/[0-9]/))
+                    }
 
-            })
+                })
 
-            await item.children[indexBtn - 1].insertAdjacentHTML(
-                'beforebegin',
-                `<${event.nodeName.toLowerCase()} style="background: ${event.style.backgroundColor}">
-                        ${event.textContent}
-                      </${event.nodeName.toLowerCase()}>`
-            )
-        }
+                await item.children[indexBtn - 1].insertAdjacentHTML(
+                    'beforebegin',
+                    `<${event.nodeName.toLowerCase()} style="background: ${event.style.backgroundColor}">
+                            ${event.textContent}
+                          </${event.nodeName.toLowerCase()}>`
+                )
+            }
 
             cloneButton(this);
 

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="section">
+        <div class="section_block">
+          <h1 class="section_title">Мои заметки</h1>
+          <div class="section_last">
+            <h2 class="h2 section_last_title">Последняя заметка</h2>
+            <div class="section_last_block">
+              <div class="section_last_block_item">
+                <img src="img/icon.jpg" alt="icon">
+              </div>
+              <div class="section_last_block_item">
+                <h3 class="section_last_block_title">Важная инфо</h3>
+                <p class="section_last_block_day">13.02.2022</p>
+                <p class="section_last_block_desk">Сегодня нужно сходить к Васе, иначе он может подумать что ...</p>
+              </div>
+            </div>
+          </div>
+          <div class="section_block_notes">
+            <h2 class="section_block_notes_title">Все заметки</h2>
+            <div class="section_block_notes_">
+<!--                <div class="section_block_notes_item">-->
+<!--                    <div>13. 02</div>-->
+<!--                    <div class="section_block_notes_cub"></div>-->
+<!--                    <div>Как я стал разработчиком</div>-->
+<!--                </div>-->
+<!--                <div class="section_block_notes_item">-->
+<!--                    <div>13. 02</div>-->
+<!--                    <div class="section_block_notes_cub"></div>-->
+<!--                    <div>Как я стал разработчиком</div>-->
+<!--                </div>-->
+                <table border="1" style="width: 100%; text-align: center;">
+                    <tr>
+                        <th>Дата</th>
+                        <th>Цвет</th>
+                        <th>Задания</th>
+                        <th>Удаления/Изменения</th>
+                    </tr>
+                </table>
+            </div>
+          </div>
+          <a href="#" class="section_btn">Создать заметку</a>
+        </div>
+    </section>
+
+    <div class="b-popup">
+        <div class="b-popup-content">
+            <h1 class="popup_title">Создать заметку</h1>
+            <form class="popup_form_add">
+                <label>
+                    Заголовок
+                    <input type="text" placeholder="Введите заметку" value="222" name="title" >
+                </label>
+                <label>
+                    Описание
+                    <input type="text" placeholder="Введите описания" value="222" name="desk" >
+                </label>
+                <label>
+                    Выберите цвет заметки
+                    <input type="color" placeholder="Введите цвет" class="input_color" name="color" >
+                </label>
+                <label>
+                    Выберите дату заметки
+                    <input type="date" placeholder="Введите дату" name="day" >
+                </label>
+                <div class="popup_btn_block">
+                    <a href="#" class="popup_form_btn_back">Отмена</a>
+                    <a href="#" class="popup_form_btn_creat">Создать</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
